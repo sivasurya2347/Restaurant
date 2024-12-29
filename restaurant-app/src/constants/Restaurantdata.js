@@ -2,95 +2,110 @@ import Restimage from "../images/mayuri.jpg";
 
 const restaurantData = [
   {
+    id: 1,
     name: "The Breakfast Club",
     rating: 4.5,
     location: "Downtown",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 2,
     name: "Gourmet Grills",
     rating: 4.7,
     location: "Uptown",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 3,
     name: "Fast Feast",
     rating: 4.3,
     location: "Central Plaza",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 4,
     name: "Sweet Treats",
     rating: 4.8,
     location: "East Side",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 5,
     name: "Vegan Vibes",
     rating: 4.6,
     location: "West End",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 6,
     name: "Spice Symphony",
     rating: 4.9,
     location: "South Market",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 7,
     name: "Burger Bliss",
     rating: 4.4,
     location: "North Square",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 8,
     name: "Pasta Paradise",
     rating: 4.5,
     location: "Little Italy",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 9,
     name: "Seafood Sensation",
     rating: 4.7,
     location: "Harbor Bay",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 10,
     name: "Urban Eatery",
     rating: 4.6,
     location: "City Center",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 11,
     name: "Rustic Bites",
     rating: 4.3,
     location: "Old Town",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 12,
     name: "Sushi Supreme",
     rating: 4.9,
     location: "Japantown",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 13,
     name: "Mediterranean Delights",
     rating: 4.8,
     location: "Mediterranean Lane",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 14,
     name: "Dessert Dreams",
     rating: 4.7,
     location: "Sugar Street",
-    image: Restimage
+    image: Restimage,
   },
   {
+    id: 15,
     name: "Taco Town",
     rating: 4.5,
     location: "Southwest Avenue",
-    image: Restimage
-  }
+    image: Restimage,
+  },
 ];
 
 export default restaurantData;

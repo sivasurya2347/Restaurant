@@ -1,14 +1,16 @@
-import React from 'react';
-import './RestaurantBox.css';
-import Restimage from '../images/mayuri.jpg';  // Use your mayuri.jpg as a fallback or for all images
+import { useNavigate } from "react-router-dom";
+import "./RestaurantBox.css"; // Ensure the CSS is imported
 
-const RestaurantBox = ({ name, rating, location, image }) => {
-  
-  const imgSrc = Restimage;  
-  
+const RestaurantBox = ({ id, name, rating, location, image }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/menu/${id}`); // Navigate to the menu page with the restaurant ID
+  };
+
   return (
-    <div className="restaurant-box">
-      <img src={imgSrc} alt={name} className="restaurant-image" />
+    <div className="restaurant-box" onClick={handleClick}>
+      <img src={image} alt={name} className="restaurant-image" />
       <div className="restaurant-info">
         <h3>{name}</h3>
         <p>Rating: {rating} ⭐</p>

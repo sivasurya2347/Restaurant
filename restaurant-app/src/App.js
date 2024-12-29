@@ -3,27 +3,27 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import NavBar from './build/NavBar';
 import RestaurantBox from './build/RestaurantBox';
 import restaurantData from './constants/Restaurantdata';
-import FoodDescriptionPage from './build/FoodDescriptionPage'; // Import the FoodDescriptionPage
+import FoodDescriptionPage from './build/FoodDescriptionPage';
+import RestaurantMenu from './build/RestaurantMenu';
+import Payment from './build/Payment'; // Import the Payment component
+import OTP from './build/OTP'; // Import the OTP component
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState(''); // Store the username after login
+  const [username, setUsername] = useState('');
   const [filteredData, setFilteredData] = useState(restaurantData);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Handle login logic
   const handleLogin = (user) => {
-    setIsAuthenticated(true); // Mark the user as authenticated
-    setUsername(user); // Store the username
+    setIsAuthenticated(true);
+    setUsername(user);
   };
 
-  // Handle logout logic
   const handleLogout = () => {
-    setIsAuthenticated(false); // Log the user out
-    setUsername(''); // Clear the username
+    setIsAuthenticated(false);
+    setUsername('');
   };
 
-  // Search logic for filtering restaurants
   const handleSearch = (query) => {
     setSearchQuery(query);
     const filtered = restaurantData.filter((restaurant) =>
@@ -35,43 +35,29 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        {/* Render NavBar only on Home Page */}
         {isAuthenticated && <NavBar username={username} onSearch={handleSearch} onLogout={handleLogout} />}
-
         <Routes>
-          {/* Protected route for Home Page */}
-          <Route
-            path="/home"
-            element={isAuthenticated ? (
-              <div className="restaurant-list">
-                {filteredData.length > 0 ? (
-                  filteredData.map((restaurant, index) => (
-                    <RestaurantBox
-                      key={index}
-                      name={restaurant.name}
-                      rating={restaurant.rating}
-                      location={restaurant.location}
-                      image={restaurant.image}
-                    />
-                  ))
-                ) : (
-                  <p>No restaurants found.</p>
-                )}
-              </div>
+          <Route path="/home" element={isAuthenticated ? <div className="restaurant-list">
+            {filteredData.length > 0 ? (
+              filteredData.map((restaurant) => (
+                <RestaurantBox
+                  key={restaurant.id}
+                  id={restaurant.id}
+                  name={restaurant.name}
+                  rating={restaurant.rating}
+                  location={restaurant.location}
+                  image={restaurant.image}
+                />
+              ))
             ) : (
-              <Navigate to="/" /> // Redirect to the login page if not authenticated
+              <p>No restaurants found.</p>
             )}
-          />
-
-          {/* Route for FoodDescriptionPage (Login Page) */}
-          <Route
-            path="/"
-            element={!isAuthenticated ? (
-              <FoodDescriptionPage onLogin={handleLogin} /> // Render login page if not authenticated
-            ) : (
-              <Navigate to="/home" /> // Redirect to home page if already logged in
-            )}
-          />
+          </div> : <Navigate to="/" />} />
+          
+          <Route path="/" element={!isAuthenticated ? <FoodDescriptionPage onLogin={handleLogin} /> : <Navigate to="/home" />} />
+          <Route path="/menu/:restaurantId" element={<RestaurantMenu />} />
+          <Route path="/payment/:itemName" element={<Payment />} /> {/* Route for Payment */}
+          <Route path="/otp" element={<OTP />} /> {/* Route for OTP */}
         </Routes>
       </div>
     </Router>
