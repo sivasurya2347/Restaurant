@@ -9,6 +9,7 @@ const OTP = () => {
 
     // Basic OTP validation (e.g., check if OTP is '1234')
     if (otp === '1234') {
+      setError(''); // Clear error if OTP is valid
       alert('Payment Successful!');
     } else {
       setError('Invalid OTP. Please try again.');
